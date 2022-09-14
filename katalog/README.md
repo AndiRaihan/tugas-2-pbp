@@ -98,7 +98,7 @@ Walaupun _best practice_-nya adalah menggunakan _virtual environment_ untuk seti
         * HEROKU_APP_NAME yang memiliki _value_ nama aplikasi yang baru saja saya buat tadi
     4. Terakhir, saya men-_deploy_ ulang repo saya yang ada di github
 
-Setelah deploy berhasil, teman-teman saya bisa melihat aplikasi yang saya buat di `https://<nama-aplikasi-heroku>.herokuapp.com`. Untuk tugas ini, aplikasi saya dapat dilihat di [sini][Link Katalog].
+    Setelah deploy berhasil, teman-teman saya bisa melihat aplikasi yang saya buat di `https://<nama-aplikasi-heroku>.herokuapp.com`. Untuk tugas ini, aplikasi saya dapat dilihat di [sini][Link Katalog].
 
 
 [Gambar Bagan]: https://user-images.githubusercontent.com/101728915/190099725-a3d620a5-c7dc-4d98-887a-38e7f7c026ff.png
