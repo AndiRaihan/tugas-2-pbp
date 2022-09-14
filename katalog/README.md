@@ -6,18 +6,18 @@ Berikut link ke aplikasi [**katalog**][Link Katalog] yang dibuat
 ### 1. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara `urls.py`, `views.py`, `models.py`, dan berkas `html`;
 
 Berikut bagan yang saya buat
-![Bagan Tugas 2 PBP](https://user-images.githubusercontent.com/101728915/190099725-a3d620a5-c7dc-4d98-887a-38e7f7c026ff.png)
+![Bagan Tugas 2 PBP][Gambar Bagan]
 Pertama-tama, _user_ mengirimkan permintaan `url` untuk _resource_ ke Django. Kemudian, _Framework_ Django mencari `url` yang sesuai dengan permintaannya. Jika `url` berhasil bersambung dengan `views`, maka `views` yang bersangkutan itu akan dipanggil dan memproses permintaan yang bersangkutan. Jika proses ini membutuhkan keterlibatan _database_, maka `views` akan memanggilakan _query_ ke `models` dan _database_ akan mengembalikan hasil dari _query_ tersebut ke `views`. Setelah itu, `views` akan me-_render_ berkas `html` yang sebelumnya sudah didefinisikan sesuai dengan data yang didapat pada proses sebelumnya. Akhirnya, berkas `html` ini akan dikembalikan ke _user_ sebagai sebuah repons.
 
 ### 2. Jelaskan kenapa menggunakan _virtual environment_? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan _virtual environment_?
 Kita menggunakan _virtual environment_ untuk memisahkan pengaturan dan _package_ yang diinstal pada setiap proyek Django sehingga perubahan yang dilakukan pada satu proyek tidak mempengaruhi proyek lainnya. Dengan menggunakan _virtual environment_ ini, kita dapat memiliki berbagai _project_ dengan berbagai pengaturan dan _package_. Berikut contohnya:
 
 1. Project A menggunakan Django 1.7
-2. Project A menggunakan Django 3.2
-3. Project A menggunakan Django 4.1.1
-4. Project A menggunakan Django 3.2
+2. Project B menggunakan Django 3.2
+3. Project C menggunakan Django 4.1.1
+4. Project D menggunakan Django 3.2
 
-Walaupun _best practice_-nya adalah menggunakan _virtual environment_ untuk setiap aplikasi web berbasis Django, kita tetap **bisa** membuatnya tanpa menggunakan _virtual environment_
+Walaupun _best practice_-nya adalah menggunakan _virtual environment_ untuk setiap aplikasi web berbasis Django, kita **tetap bisa** membuatnya walau tanpa menggunakan _virtual environment_
 
 ### 3. Jelaskan bagaimana cara kamu mengimplementasikan poin 1 sampai dengan 4 di atas.
 
@@ -97,7 +97,9 @@ Walaupun _best practice_-nya adalah menggunakan _virtual environment_ untuk seti
         * HEROKU_API_KEY yang memiliki _value api key_ akun heroku saya
         * HEROKU_APP_NAME yang memiliki _value_ nama aplikasi yang baru saja saya buat tadi
     4. Terakhir, saya men-_deploy_ ulang repo saya yang ada di github
-    5. Setelah deploy berhasil, teman-teman saya bisa melihat aplikasi yang saya buat di `https://<nama-aplikasi-heroku>.herokuapp.com`. Untuk tugas ini, aplikasi saya dapat dilihat di [sini][Link Katalog].
+
+Setelah deploy berhasil, teman-teman saya bisa melihat aplikasi yang saya buat di `https://<nama-aplikasi-heroku>.herokuapp.com`. Untuk tugas ini, aplikasi saya dapat dilihat di [sini][Link Katalog].
 
 
+[Gambar Bagan]: https://user-images.githubusercontent.com/101728915/190099725-a3d620a5-c7dc-4d98-887a-38e7f7c026ff.png
 [Link Katalog]: https://lab-1-pbp-saya.herokuapp.com/katalog
