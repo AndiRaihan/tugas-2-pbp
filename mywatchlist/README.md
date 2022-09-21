@@ -7,4 +7,4 @@ Berikut link ke aplikasi [**mywatchlist**][Link mywatchlist] yang dibuat
     
 *  
 
-[mywatchlist]: www.google.com
+[mywatchlist]: https://lab-1-pbp-saya.herokuapp.com/mywatchlist/html
