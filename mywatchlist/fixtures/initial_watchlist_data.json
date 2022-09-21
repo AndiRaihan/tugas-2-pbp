@@ -1,0 +1,112 @@
+[
+    {
+        "model": "mywatchlist.watchlistmovies",
+        "pk": 1,
+        "fields": {
+            "watched": false,
+            "title": "The Shawshank Redemption",
+            "rating": 5,
+            "release_date": "1994-09-22",
+            "review": "The unexpected twist and turns from the very beginning till the end with some stunning lifetime best performances, flawless writing and brilliant Direction, makes \"The Shawshank Redemption\" a must watch flick."
+        }
+    },
+    {
+        "model": "mywatchlist.watchlistmovies",
+        "pk": 2,
+        "fields": {
+            "watched": true,
+            "title": "12 Angry Men",
+            "rating": 4,
+            "release_date": "1957-04-15",
+            "review": "it's definitely worth to give it a chance, specially if you don't mind watching smart, engaging films that, along with pieces like Rashomon and The Rope, fluorish within the minimalist environment and the right people in charge"
+        }
+    },
+    {
+        "model": "mywatchlist.watchlistmovies",
+        "pk": 3,
+        "fields": {
+            "watched": true,
+            "title": "Forrest Gump",
+            "rating": 5,
+            "release_date": "1994-07-06",
+            "review": "An extraordinary journey of an ordinary man & arguably one of the best performances of all time by Tom Hanks don't give a miss to this one. It may change your perception about life"
+        }
+    },
+    {
+        "model": "mywatchlist.watchlistmovies",
+        "pk": 4,
+        "fields": {
+            "watched": false,
+            "title": "Whiplash",
+            "rating": 4,
+            "release_date": "2014-01-16",
+            "review": "This is an amazing piece of work should be mandatory in all music, trade and business, schools, just so nobody are in doubt what you are in for."
+        }
+    },
+    {
+        "model": "mywatchlist.watchlistmovies",
+        "pk": 5,
+        "fields": {
+            "watched": true,
+            "title": "Spider-Man: No Way Home",
+            "rating": 4,
+            "release_date": "2021-12-17",
+            "review": "Throughout all of it, the weird and complex history of Spider-Man as a cinematic icon isn't a hindrance to the story; instead, it's an enhancement, using the quirks of the character's legacy as a source of illumination into why he has endured so long."
+        }
+    },
+    {
+        "model": "mywatchlist.watchlistmovies",
+        "pk": 6,
+        "fields": {
+            "watched": true,
+            "title": "Pengabdi Setan 2: Communion",
+            "rating": 3,
+            "release_date": "2022-08-04",
+            "review": "Filmnya bagus banget. Secara keseluruhan seram dan mengangkat isu-isu menarik sesuai dengan waktu cerita di film itu (1980-an)"
+        }
+    },
+    {
+        "model": "mywatchlist.watchlistmovies",
+        "pk": 7,
+        "fields": {
+            "watched": true,
+            "title": "Finding Nemo",
+            "rating": 5,
+            "release_date": "2003-05-30",
+            "review": "Finding Nemo offers as much in terms of thrills, frights, humour and psychological insight as it does in pure technical skill, proving that a movie can be art without being an \"art\" movie."
+        }
+    },
+    {
+        "model": "mywatchlist.watchlistmovies",
+        "pk": 8,
+        "fields": {
+            "watched": false,
+            "title": "Raya and the Last Dragon",
+            "rating": 4,
+            "release_date": "2021-03-03",
+            "review": "A beautifully heart-swelling put a lump in your throat kind of family film that doesn't come around too often."
+        }
+    },
+    {
+        "model": "mywatchlist.watchlistmovies",
+        "pk": 9,
+        "fields": {
+            "watched": true,
+            "title": "Bohemian Rhapsody",
+            "rating": 4,
+            "release_date": "2018-11-02",
+            "review": "Like many biopics, it's a bit glossy when it comes to the darker moments in (Freddie Mercury's) life. but the affection for the music and the great man is absolutely there."
+        }
+    },
+    {
+        "model": "mywatchlist.watchlistmovies",
+        "pk": 10,
+        "fields": {
+            "watched": false,
+            "title": "Parasite",
+            "rating": 5,
+            "release_date": "2019-10-11",
+            "review": "With a delicious black comedy edge, some surprising jolts of heartfelt emotion, and a violent throat punch when you’re least expecting it, “Parasite” is a movie that keeps you engaged and guessing."
+        }
+    }
+]
