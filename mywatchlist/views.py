@@ -7,12 +7,13 @@ from django.core import serializers
 def show_html(request):
     data = WatchlistMovies.objects.all()
     sum_watched_movies = 0
-    half_of_movies = len(data)/2
     for movies in data.iterator():
         if movies.watched:
-            sum_watched_movies +=1
+            sum_watched_movies += 1
+        else:
+            sum_watched_movies -= 1
         
-    if sum_watched_movies >= half_of_movies:
+    if sum_watched_movies >= 0:
         msg = "Selamat, kamu sudah banyak menonton!"
     else:
         msg = "Wah, kamu masih sedikit menonton!"
