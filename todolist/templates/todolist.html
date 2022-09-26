@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Tugas 3 PBP/PBD</h1>
+
+<h2>To-Do List</h2>
+
+<h4>User Name: {{user_name}}</h4>
+
+<table>
+    <tr>
+    <th>Tanggal Pembuatan</th>
+    <th>Judul Task</th>
+    <th>Deskripsi Task</th>
+    <th>Penyelesaian Task</th>
+    <th>Toggle penyelesaian Task</th>
+    <th>Delete Task</th>
+    </tr>
+{% comment %} Tambahkan data di bawah baris ini {% endcomment %}
+{% for task in list_kerjaan %}
+    <tr>
+        <td>{{task.date}}</td>
+        <td>{{task.title}}</td>
+        <td>{{task.description}}</td>
+        <td>{{task.is_finished}}</td>
+        <td><a href="toggle/{{ task.id }}">Toggle</a></td>
+        <td><a href="delete/{{ task.id }}">Hapus</a></td>
+    </tr>
+{% endfor %}
+</table>
+<button><a href="{% url 'todolist:add_todolist' %}">Tambah Task Baru</a></button>
+<h5>Sesi terakhir login: {{ last_login }}</h5>
+<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+{% endblock content %}
