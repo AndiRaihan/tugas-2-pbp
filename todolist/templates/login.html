@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<div class = "login">
+<div class="login">
 
     <h1>Login</h1>
 
@@ -17,7 +17,7 @@
                 <td>Username: </td>
                 <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
             </tr>
-                    
+
             <tr>
                 <td>Password: </td>
                 <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
@@ -33,11 +33,11 @@
     {% if messages %}
         <ul>
             {% for message in messages %}
-                <li>{{ message }}</li>
+            <li>{{ message }}</li>
             {% endfor %}
         </ul>
-    {% endif %}     
-        
+    {% endif %}
+
     Belum mempunyai akun? <a href="{% url 'todolist:register' %}">Buat Akun</a>
 
 </div>

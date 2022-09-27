@@ -4,22 +4,22 @@
 <title>Tambah Task</title>
 {% endblock meta %}
 
-{% block content %}  
+{% block content %}
 
-<div class = "add">
-    
-    <h1>Tambah Task</h1>  
+<div class="add">
 
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Tambah"/></td>  
-                </tr>  
-            </table>  
-        </form>
-</div>  
+    <h1>Tambah Task</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+            <tr>
+                <td></td>
+                <td><input type="submit" name="submit" value="Tambah" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
 
 {% endblock content %}

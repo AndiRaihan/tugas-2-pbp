@@ -1,40 +1,70 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Tugas 3 PBP/PBD</h1>
 
-<h2>To-Do List</h2>
+<head>
+    <style>
+        h1,
+        h2,
+        h4,
+        h5 {
+            font-family: arial;
+        }
 
-<h4>User Name: {{user_name}}</h4>
+        table,
+        th,
+        td {
+            border-collapse: collapse;
+            font-family: arial;
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<h1 style="text-align: center;">Tugas 3 PBP/PBD</h1>
+
+<h2 style="text-align: center;">To-Do List</h2>
+
+<h4 style="text-align: center;">User Name: {{user_name}}</h4>
 
 <table border="1" style="text-align: center; padding: 15px 15px;">
     <tr>
-    <th style="padding: 15px;">Tanggal Pembuatan</th>
-    <th style="padding: 15px;">Judul Task</th>
-    <th style="padding: 15px;">Deskripsi Task</th>
-    <th style="padding: 15px;">Penyelesaian Task</th>
-    <th style="padding: 15px;">Toggle penyelesaian Task</th>
-    <th style="padding: 15px;">Delete Task</th>
+        <th style="padding: 15px;">Tanggal Pembuatan</th>
+        <th style="padding: 15px;">Judul Task</th>
+        <th style="padding: 15px;">Deskripsi Task</th>
+        <th style="padding: 15px;">Status Task</th>
+        <th style="padding: 15px;">Toggle Status Task</th>
+        <th style="padding: 15px;">Delete Task</th>
     </tr>
-{% comment %} Tambahkan data di bawah baris ini {% endcomment %}
-{% for task in list_kerjaan %}
-    <tr>
-        <td style="text-align: center; padding: 15px;">{{task.date}}</td>
-        <td style="text-align: center; padding: 15px;">{{task.title}}</td>
-        <td style="text-align: center; padding: 15px;">{{task.description}}</td>
-        <td style="text-align: center; padding: 15px;">
-            {% if task.is_finished %}
-            Selesai
-            {% else %}
-            Belum Selesai
-            {% endif %}
-        </td>
-        <td style="text-align: center; padding: 15px;"><button><a href="toggle/{{ task.id }}">Toggle</a></button></td>
-        <td style="text-align: center; padding: 15px;"><button><a href="delete/{{ task.id }}">Hapus</a></button></td>
-    </tr>
-{% endfor %}
+    {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
+    {% for task in list_kerjaan %}
+        <tr>
+            <td style="text-align: center; padding: 15px;">{{task.date}}</td>
+            <td style="text-align: center; padding: 15px;">{{task.title}}</td>
+            <td style="text-align: center; padding: 15px;">{{task.description}}</td>
+            <td style="text-align: center; padding: 15px;">
+                {% if task.is_finished %}
+                    Selesai
+                {% else %}
+                    Belum Selesai
+                {% endif %}
+            </td>
+            <td style="text-align: center; padding: 15px;"><button><a href="toggle/{{ task.id }}">Toggle</a></button></td>
+            <td style="text-align: center; padding: 15px;"><button><a href="delete/{{ task.id }}">Hapus</a></button></td>
+        </tr>
+    {% endfor %}
 </table>
-<h5>Sesi terakhir login: {{ last_login }}</h5>
-<button><a href="{% url 'todolist:add_todolist' %}">Tambah Task Baru</a></button>
-<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+<h5 style="text-align: center;">Sesi terakhir login: {{ last_login }}</h5>
+<div class="btn">
+    <button style="text-align: center;"><a href="{% url 'todolist:add_todolist' %}">Tambah Task Baru</a></button>
+    <button style="text-align: center;"><a href="{% url 'todolist:logout' %}">Logout</a></button>
+</div>
 {% endblock content %}
