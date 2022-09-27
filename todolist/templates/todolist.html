@@ -7,28 +7,34 @@
 
 <h4>User Name: {{user_name}}</h4>
 
-<table>
+<table border="1" style="text-align: center; padding: 15px 15px;">
     <tr>
-    <th>Tanggal Pembuatan</th>
-    <th>Judul Task</th>
-    <th>Deskripsi Task</th>
-    <th>Penyelesaian Task</th>
-    <th>Toggle penyelesaian Task</th>
-    <th>Delete Task</th>
+    <th style="padding: 15px;">Tanggal Pembuatan</th>
+    <th style="padding: 15px;">Judul Task</th>
+    <th style="padding: 15px;">Deskripsi Task</th>
+    <th style="padding: 15px;">Penyelesaian Task</th>
+    <th style="padding: 15px;">Toggle penyelesaian Task</th>
+    <th style="padding: 15px;">Delete Task</th>
     </tr>
 {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
 {% for task in list_kerjaan %}
     <tr>
-        <td>{{task.date}}</td>
-        <td>{{task.title}}</td>
-        <td>{{task.description}}</td>
-        <td>{{task.is_finished}}</td>
-        <td><a href="toggle/{{ task.id }}">Toggle</a></td>
-        <td><a href="delete/{{ task.id }}">Hapus</a></td>
+        <td style="text-align: center; padding: 15px;">{{task.date}}</td>
+        <td style="text-align: center; padding: 15px;">{{task.title}}</td>
+        <td style="text-align: center; padding: 15px;">{{task.description}}</td>
+        <td style="text-align: center; padding: 15px;">
+            {% if task.is_finished %}
+            Selesai
+            {% else %}
+            Belum Selesai
+            {% endif %}
+        </td>
+        <td style="text-align: center; padding: 15px;"><button><a href="toggle/{{ task.id }}">Toggle</a></button></td>
+        <td style="text-align: center; padding: 15px;"><button><a href="delete/{{ task.id }}">Hapus</a></button></td>
     </tr>
 {% endfor %}
 </table>
-<button><a href="{% url 'todolist:add_todolist' %}">Tambah Task Baru</a></button>
 <h5>Sesi terakhir login: {{ last_login }}</h5>
+<button><a href="{% url 'todolist:add_todolist' %}">Tambah Task Baru</a></button>
 <button><a href="{% url 'todolist:logout' %}">Logout</a></button>
 {% endblock content %}
