@@ -1,4 +1,3 @@
-from xml.etree.ElementInclude import include
 from django.urls import path
 from todolist.views import *
 
@@ -13,4 +12,3 @@ urlpatterns = [
     path('delete/<int:id>', delete, name='delete'),
     path('toggle/<int:id>', toggle_completion, name='toggle_completion'),
 ]
-
