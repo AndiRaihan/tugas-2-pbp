@@ -1,70 +1,142 @@
 {% extends 'base.html' %}
 
+{% block meta %}
+<title>To-Do List</title>
+<style>
+    h1,
+    h2,
+    h4,
+    h5 {
+        font-family: arial;
+    }
+
+    table,
+    th,
+    td {
+        border-collapse: collapse;
+        font-family: arial;
+    }
+
+    table {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .btn {
+        text-align: center;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+    }
+
+    .top-buffer {
+        margin-top: 20px;
+    }
+
+    .card-unfinished {
+        background: red;
+        color: white;
+    }
+
+    .card-finished {
+        background: green;
+        color: white;
+    }
+</style>
+{% endblock meta %}
 {% block content %}
 
-<head>
-    <style>
-        h1,
-        h2,
-        h4,
-        h5 {
-            font-family: arial;
-        }
 
-        table,
-        th,
-        td {
-            border-collapse: collapse;
-            font-family: arial;
-        }
-
-        table {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn {
-            text-align: center;
-        }
-    </style>
-</head>
-
-<h1 style="text-align: center;">Tugas 3 PBP/PBD</h1>
+<h1 style="text-align: center;">Tugas 3&4 PBP/PBD</h1>
 
 <h2 style="text-align: center;">To-Do List</h2>
 
 <h4 style="text-align: center;">User Name: {{user_name}}</h4>
 
-<table border="1" style="text-align: center; padding: 15px 15px;">
-    <tr>
-        <th style="padding: 15px;">Tanggal Pembuatan</th>
-        <th style="padding: 15px;">Judul Task</th>
-        <th style="padding: 15px;">Deskripsi Task</th>
-        <th style="padding: 15px;">Status Task</th>
-        <th style="padding: 15px;">Toggle Status Task</th>
-        <th style="padding: 15px;">Delete Task</th>
-    </tr>
-    {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
-    {% for task in list_kerjaan %}
-        <tr>
-            <td style="text-align: center; padding: 15px;">{{task.date}}</td>
-            <td style="text-align: center; padding: 15px;">{{task.title}}</td>
-            <td style="text-align: center; padding: 15px;">{{task.description}}</td>
-            <td style="text-align: center; padding: 15px;">
-                {% if task.is_finished %}
-                    Selesai
+<div class="container-fluid">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
+        {% for task in list_kerjaan %}
+        {% if task.is_finished %}
+        <div class="col">
+            <div class="card text-center h-100">
+                <div class="card-header card-finished">
+                    <h4>{{task.title}}</h4>
+                    <p>(Selesai)</p>
+                </div>
+                <div class="card-body">
+                    <div class="container text-center">
+                        <div class="row align-item-start">
+                            <p>{{task.description}}</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="btn btn-primary" style="text-align: center;"><a
+                                    style="color:white; text-decoration:none"
+                                    href="toggle/{{ task.id }}">Toggle</a></button>
+                                <button class="btn btn-danger" style="text-align: center;"><a
+                                        style="color:white; text-decoration:none"
+                                        href="delete/{{ task.id }}">Hapus</a></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer card-finished">
+                    {{task.date}}
+                </div>
+            </div>
+        </div>
                 {% else %}
-                    Belum Selesai
+                <div class="col">
+                    <div class="card text-center h-100">
+                        <div class="card-header card-unfinished">
+                            <h4>{{task.title}}</h4>
+                            <p>(Belum Selesai)</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="container text-center">
+                                <div class="row align-item-start">
+                                    <p>{{task.description}}</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-primary" style="text-align: center;"><a
+                                            style="color:white; text-decoration:none"
+                                            href="toggle/{{ task.id }}">Toggle</a></button>
+                                        <button class="btn btn-danger" style="text-align: center;"><a
+                                                style="color:white; text-decoration:none"
+                                                href="delete/{{ task.id }}">Hapus</a></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer card-unfinished">
+                            {{task.date}}
+                        </div>
+                    </div>
+                </div>
                 {% endif %}
-            </td>
-            <td style="text-align: center; padding: 15px;"><button><a href="toggle/{{ task.id }}">Toggle</a></button></td>
-            <td style="text-align: center; padding: 15px;"><button><a href="delete/{{ task.id }}">Hapus</a></button></td>
-        </tr>
-    {% endfor %}
-</table>
-<h5 style="text-align: center;">Sesi terakhir login: {{ last_login }}</h5>
-<div class="btn">
-    <button style="text-align: center;"><a href="{% url 'todolist:add_todolist' %}">Tambah Task Baru</a></button>
-    <button style="text-align: center;"><a href="{% url 'todolist:logout' %}">Logout</a></button>
+        
+
+        {% endfor %}
+    </div>
+</div>
+
+
+
+<h5 class="top-buffer" style="text-align: center;">Sesi terakhir login: {{ last_login }}</h5>
+<div class="container text-center top-buffer">
+    <div class="row justify-content-center">
+        <div class="col d-flex justify-content-end">
+            <button class="btn btn-primary" style="text-align: center;"><a style="color:white; text-decoration:none"
+                    href="{% url 'todolist:add_todolist' %}">Tambah Task Baru</a></button>
+        </div>
+        <div class="col d-flex justify-content-start">
+            <button class="btn btn-primary" style="text-align: center;"><a style="color:white; text-decoration:none"
+                    href="{% url 'todolist:logout' %}">Logout</a></button>
+        </div>
+    </div>
 </div>
 {% endblock content %}

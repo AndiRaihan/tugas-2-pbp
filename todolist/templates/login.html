@@ -2,42 +2,54 @@
 
 {% block meta %}
 <title>Login</title>
+<style>
+    form {
+        margin: 2%;
+        width: 40vw;
+        padding: 1em;
+        border: 2px solid rgb(87, 73, 73);
+        border-radius: 1em;
+        font-size: 15px;
+    }
+    .top-buffer { margin-top:20px; }
+</style>
 {% endblock meta %}
 
 {% block content %}
 
-<div class="login">
 
-    <h1>Login</h1>
-
+<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
     <form method="POST" action="">
         {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
+        <div class="row">
+            <h1 style="text-align:center">Login</h1>
+        </div>
+        <div class="row top-buffer">
+            <div class="col-xl-2 align-self-center">
+                <label class="form-lable" for="id_username">Username</label>
+            </div>
+            <div class="col align-self-center">
+                <input type="text" name="username" placeholder="Your username" id="id_username" class="form-control">
+            </div>
+        </div>
+        <div class="row top-buffer">
+            <div class="col-xl-2 align-self-center">
+                <label class="form-lable" for="id_password">Password</label>
+            </div>
+            <div class="col align-self-center">
+                <input type="password" name="password" placeholder="Your password" id="id_password" class="form-control">
+            </div>
+        </div>
+        <input type="submit" name="submit" value="login" class="btn btn-primary mx-auto d-block top-buffer">
     </form>
 
     {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
     {% endif %}
-
     Belum mempunyai akun? <a href="{% url 'todolist:register' %}">Buat Akun</a>
 
 </div>

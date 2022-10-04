@@ -1,3 +1,4 @@
+## Untuk melihat tugas 5, pencet [Link ini](#tugas-5-pbp)
 # Tugas 4 PBP
 Tugas ini diselesaikan oleh Andi Muhamad Dzaky Raihan, NPM 2106631412, kode Asdos FRA.
 
@@ -434,5 +435,123 @@ return render(request, 'todolist.html', context)
 9. **Membuat dua akun pengguna dan tiga dummy data menggunakan model Task pada akun masing-masing di situs web Heroku.**
 
     Manfaatkan fitur registrasi akun di web untuk membuat 2 akun pengguna. Setelah itu, gunakan fitur `create-task` untuk membuat 3 dummy data di masing-masing akun
+
+# Tugas 5 PBP
+Tugas ini diselesaikan oleh Andi Muhamad Dzaky Raihan, NPM 2106631412, kode Asdos FRA.
+
+Berikut link ke aplikasi yang dibuat:
+* [Link to-do list][to-do list heroku]
+
+### 1. Apa perbedaan dari Inline, Internal, dan External CSS? Apa saja kelebihan dan kekurangan dari masing-masing _style_?
+* Inline
+    
+    Inline CSS adalah styling/kode CSS yang digunakan langsung untuk suatu tag html secara spesifik. Atribut `<style>` digunakan untuk memberikan style ke suatu tag html. Berikut contohnya:
+    ```html
+    <h2 style="text-align: center">To-Do List</h2>
+    ```
+    * Kelebihan: Untuk perbaikan cepat, pemintaan HTTP yang kecil, dan untuk menguji dan melihat perbuahan
+    * Kekurangan: Hanya mengatur 1 tag, jika ingin satu halaman maka perlu diterapkan untuk setiap tag 
+* Internal
+
+    Internal CSS adalah kode CSS internal yang ditaruh di dalam bagian `<head>` pada sebuah halaman. Class dan ID dapat digunakan untuk merujuk kode pada CSS, namun hanya akan aktif pada halaman tersebut.
+
+    * Kelebihan: Class & Id bisa digunakan oleh internal stylesheet, Perubahan hanya pada 1 halaman, Tidak perlu menggunakan beberapa file
+    * Kekurangan: Meningkatkan waktu akses website, Tidak efisien jika ingin menggunakan style css yang sama pada beberapa halaman
+* External CSS
+
+    External CSS adalah kode CSS yang ditulis pada sebuah file .CSS terpisah. File CSS ini akan dilink di dalam file html tepatnya di bagian `<head>`. Berikut contohnya 
+    ```html
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    ```
+    * Kelebihan: File CSS bisa digunakan di berbagai halaman, Kecepatan load jadi lebih cepat, ukuran file HTML mengecil dan strukturnya rapih
+    * Kekurangan: Halaman tidak akan tampil sempurna selama file CSS belum selesai dipanggil
+
+### 2. Jelaskan tag HTML5 yang kamu ketahui.
+```html
+<a> = Mendefinisikan hyperlink
+<b> = Menampilkan text dalam bentuk bold
+<body> = Mendefinisikan Body dokumen
+<br> = Menghasilkan sebuah line break
+<button> = Membuat sebuah tombol yang bisa dipencet
+<div> = Menjelaskan sebuah divisi atau bagian di sebuah dokumen
+<form> = Mendefinisikan sebuah form HTML untuk input user
+<head> = Mendefiniskan bagian head dari sebuah dokumen yang mengandung informasi mengenai dokumennya seperti judul/title
+<h1> - <h6> = Mendefinisikan Heading/judul pada HTML
+<hr> = Membuat sebuah garis horizontal
+<input> = Mendefinisikan input control
+<label> = Mendefinisikan label untuk <input> control
+<li> = Mendefinisikan list item
+<meta> = Menyajikan metadata terstruktur mengenai kontek dokumennya
+<ol> = Mendefinisikan ordered list
+<p> = Mendefinisikan sebuah paragraf
+<span> = Mendefinisikan sebuah inline bagian tanpa style di sebuah dokumen
+<style> = Memasukkan informasi style (Biasanya CSS) ke dalam Head sebuah dokumen
+<table> = Mendefiniskan sebuah tabel data
+<tbody> = Mengelompokan sekumpulan baris mendefinisikan badan utama sebuah tabel data
+<td> = Mendefinisikan sebuah cell di dalam tabel
+<textarea> = Tempat user dapat memasukkan text (multi line)
+<th> = Mendefinisikan header cell dalam sebuah tabel
+<thead> = Mengelompokkan sejumlah baris yang mendeskripsikan label kolom sebuah tabel
+<title> = Mendefinisikan judul dari sebuah dokumen
+<tr> = Mendefinisikan sebuah baris cell di dalam tabel
+<ul> = Mendefinisikan list tak berurut
+```
+
+### 3. Jelaskan tipe-tipe CSS selector yang kamu ketahui.
+* Element Selector: _Element Selector_ menggunakan tag HTML sebagai _selector_ untuk mengubah properti yang ada di dalam tag tersebut. Berikut contohnya:
+    ```cSS
+    form {
+            margin: 2%;
+            width: 40vw;
+            padding: 1em;
+            border: 2px solid rgb(87, 73, 73);
+            border-radius: 1em;
+            font-size: 15px;
+        }
+    ```
+* ID Selektor: _ID Selector_ menggunakan ID pada tag HTML sebagai _selector_-nya (ID harus unik). Pada CSS-nya, menggunakan format `#id`. Berikut contohnya
+
+    Untuk Tag-nya:
+    ```html
+    ...
+        <div id="text">
+            <p>Ini Text percobaan</p>
+        </div>
+    ...
+    ```
+    Selector di CSS
+    ```CSS
+    #text {
+        font-family: arial;
+    }
+    ```
+
+* Class Selector: _Class Selector_ menggunakan class pada tag HTML sebagai _selector_-nya. Pada CSS-nya, menggunakan format `.class`. Berikut contohnya:
+
+    Untuk Tag-nya
+    ```html
+    ...
+    <div class="card-header card-finished">
+        <h4>{{task.title}}</h4>
+        <p>(Selesai)</p>
+    </div>
+    ...
+    ```
+
+    Selector di CSS:
+    ```CSS
+    .card-finished {
+        background: green;
+        color: white;
+    }
+    ```
+* `*` Selector: Mengatur semua elemen yang ada di dokumen. _Selector_ ini juga bisa seluruh elemen di dalam sebuah elemen lainnya. Berikut contohnya:
+    ```CSS
+    * {
+    background-color: black;
+    }
+    ```
+
+### 4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
 
 [to-do list heroku]: https://lab-1-pbp-saya.herokuapp.com/todolist/
