@@ -553,5 +553,57 @@ Berikut link ke aplikasi yang dibuat:
     ```
 
 ### 4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+1. **Kustomisasi templat HTML yang telah dibuat pada Tugas 4 dengan menggunakan CSS atau CSS framework (seperti Bootstrap, Tailwind, Bulma)**
+    
+    Pertama-tama, saya menggunakan CSS framework Bootstrap sehingga saya menambahkan link bootstrap di head yang ada di `base.html` sebagai berikut :
+    ```CSS
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    ```
+    Selain itu, saya juga menambahkan 2 scripts di bagian body `base.html`:
+    ```CSS
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+    crossorigin="anonymous"></script>
+    ```
+    Kemudian berikut yang saya lakukan untuk masing-masing halaman:
+    * create-task
+        * Membuat styling untuk element form, seperti border, padding, margin, dll
+        * Membuka penyingkat dari django untuk form yakni dari `{{form.as_table}}` menjadi baris-baris html
+        * Semua elemen form tadi ditaruh di dalam sebuah container yang berukuran seluruh halaman dan dibuat center halaman
+        * Memanfaatkan class yang ada di bootstrap untuk mengubah penampilan input field, label, dan button submitnya
+
+    * login
+        * Membuat styling untuk element form, seperti border, padding, margin, dll. Serta membuat class untuk menambahkan buffer di bagian atas
+        * Membuat container seukuran halaman untuk menyimpan seluruh elemen yang nantinya akan digunakan dan bisa di-_center_ di tengah halaman elemennya
+        * Memanfaatkan _grid layout_ yang ada di Bootstrap untuk menaruh elemen-elemen input, label, button, dan lainnya di form
+        * Memanfaatkan class yang ada di bootstrap untuk mengubah penampilan input field, label, dan button submitnya. 
+    
+    * Register
+        * Membuat styling untuk element form, seperti border, padding, margin, dll. Serta membuat class untuk menambahkan buffer di bagian atas, dan juga mengubah style dari beberapa elemen
+        * Membuat container seukuran halaman untuk menyimpan seluruh elemen yang nantinya akan digunakan dan bisa di-_center_ di tengah halaman elemennya
+        * Membuka penyingkat dari django untuk form yakni dari `{{form.as_table}}` menjadi baris-baris html
+        * Memanfaatkan _grid layout_ yang ada di Bootstrap untuk menaruh elemen-elemen input, label, button, list, dan lainnya di form
+        * Memanfaatkan class yang ada di bootstrap untuk mengubah penampilan input field, label, dan button submitnya.
+
+    * _todo list_
+        * Untuk looping setiap objek di todolist, bukannya membuat elemen tabel saya membuat sebuah card dan field-field dari objek ini saya masukkan ke _card_.
+        * Saya memanfaatkan _grid layout_ di Bootstrap 5.2 sehingga alignment elemen di dalam card dan layout cardnya di halaman itu sendiri bisa diatur sehingga rapih.
+        * Dengan dilakukannya kedua langkah di atas, akan terbuat _card_ sebanyak objek _todo list_ yang ada dan layout dari setiap _card_ seragam.
+        * Selanjutnya, saya melakukan customasi beberapa elemen dan menambahkan beberapa class baru di style.
+        * Terakhir, saya merubah beberapa penampilan elemen html menggunakan class, container, dan grid yang dimiliki bootstrap 
+
+2. **Membuat keempat halaman yang dikustomisasi menjadi responsive.**
+    
+    Sebelumnya, saya menggunakan _framework_ Bootstrap 5.2 untuk aplikasi ini. Untungnya, Bootstrap ini menyediakan _media query_ berdasarkan _breakpoint-breakpoint_ yang sudah disediakan [See Here](https://getbootstrap.com/docs/5.2/layout/breakpoints/). Ditambah lagi, class grid dan container memanfaatkan _breakpoint-breakpoint_ ini sehingga mereka bisa responsive menyesuaikan dengan _breakpoint_-nya (Misal jika sebuah row telah mencapai batas breakpoint yang dispesifikasinya tampilannya akan berubah).
+    
+    Dengan demikian, agar halamannya responsive saya membungkus elemen-elemen html di dalam sebuah grid dan/atau sebuah container sehingga elemen-elemennya responsif. Ditambah lagi, saya membuat ukuran beberapa elemen relatif terhadap ukuran halaman sedemikian sehingga elemen tersebut menjadi responsif.
+    
+
+
+
 
 [to-do list heroku]: https://lab-1-pbp-saya.herokuapp.com/todolist/
