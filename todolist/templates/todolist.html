@@ -52,8 +52,29 @@
         document.getElementById("formAddTask").reset();
     }
 
+    function toggleCard(id) {
+        $.ajax({
+            url: `./toggle/${id}`,
+            dataType: 'json',
+            success: function (data) {
+                resetCard();
+            }
+        });
+
+    }
+
+    function deleteCard(id) {
+        $.ajax({
+            url: `./delete/${id}`,
+            dataType: 'json',
+            success: function (data) {
+                document.getElementById(`card ${id}`).remove();
+            }
+        });
+    }
+
     function resetCard() {
-        $("#card-container").empty();
+        $("#myCard").empty();
         $.ajax({
             url: './json/',
             dataType: 'json',
@@ -69,7 +90,7 @@
                         warna = "card-unfinished"
                     }
                     var date = new Date(data[i].fields.date);
-                    var row = `<div class="col">
+                    var card = `<div class="col" id="card ${data[i].pk}">
                                     <div class="card text-center h-100">
                                         <div class="card-header ${warna}">
                                             <h4>${data[i].fields.title}</h4>
@@ -82,12 +103,10 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <button class="btn btn-primary" style="text-align: center;"><a
-                                                            style="color:white; text-decoration:none"
-                                                            href="toggle/${data[i].pk}">Toggle</a></button>
-                                                        <button class="btn btn-danger" style="text-align: center;"><a
-                                                                style="color:white; text-decoration:none"
-                                                                href="delete/${data[i].pk}">Hapus</a></button>
+                                                        <button class="btn btn-primary" style="text-align: center;"
+                                                        onclick="toggleCard(${data[i].pk});">Toggle</button>
+                                                        <button class="btn btn-danger" style="text-align: center;" 
+                                                            onclick="deleteCard(${data[i].pk});">Hapus</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -97,7 +116,7 @@
                                         </div>
                                     </div>
                                 </div>`;
-                    $('#myCard').append(row);
+                    $('#myCard').append(card);
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -107,10 +126,6 @@
     }
 
     function addTask() {
-        var title = $("#id_title").val();
-        var description = $("#id_description").val();
-        var csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val();
-
         $.ajax({
             type: 'POST',
             url: './add/',
@@ -118,13 +133,13 @@
                 title: $("#id_title").val(),
                 description: $("#id_description").val(),
                 csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
-            },success: function() {
+            }, success: function () {
                 resetCard();
                 resetForm();
             },
-            error : function(xhr,errmsg,err) {
+            error: function (xhr, errmsg, err) {
                 console.log(xhr.status + ": " + xhr.responseText);
-        }
+            }
         })
     }
     $(document).ready(function () {
@@ -163,16 +178,13 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Task</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     onclick="resetForm();"></button>
             </div>
             <div class="modal-body">
                 <form method="POST" class="form-floating" id="formAddTask">
                     {% csrf_token %}
-                    <div class="row">
-                        <h1 style="text-align:center;">Tambah Task</h1>
-                    </div>
                     <div class="form-floating mb-3">
                         <input type="text" name="title" maxlength="255" required="" id="id_title" class="form-control"
                             placeholder="Insert Title Here">
@@ -184,12 +196,12 @@
                         <label class="form-lable" for="id_description">Description</label>
                     </div>
             </div>
+        </form>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                     onclick="resetForm();">Close</button>
-                <input type="submit" name="submit" id="addButton" value="Tambah" class="btn btn-primary" onclick="addTask();">
+                <input type="submit" name="submit" id="addButton" value="Tambah" class="btn btn-primary"  onclick="addTask();">
             </div>
-            </form>
         </div>
     </div>
 </div>

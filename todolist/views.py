@@ -128,7 +128,6 @@ def add_todolist_ajax(request):
                                                 user=request.user, date=datetime.date.today())
             response_data['title'] = title
             response_data['description'] = description
-            response_data['user'] = request.user
             response_data['date'] = datetime.date.today()
             return JsonResponse(response_data);
 
@@ -146,7 +145,7 @@ def delete(request, id):
     if request.user.is_authenticated:
         task = ToDoList.objects.get(id=id)
         task.delete()
-        return redirect('todolist:show_todolist')
+        return JsonResponse({'msg':'success'})
     else:
         return redirect('todolist:login')
 
@@ -157,7 +156,7 @@ def toggle_completion(request, id):
         task = ToDoList.objects.get(id=id)
         task.is_finished = not task.is_finished
         task.save()
-        return redirect('todolist:show_todolist')
+        return JsonResponse({'msg':'success'})
     else:
         return redirect('todolist:login')
 
