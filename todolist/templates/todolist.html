@@ -133,9 +133,14 @@
                 title: $("#id_title").val(),
                 description: $("#id_description").val(),
                 csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
-            }, success: function () {
-                resetCard();
-                resetForm();
+            }, success: function(data) {
+                if (data.msg == "success"){
+                    resetCard();
+                    resetForm();
+                    $('#modalTambahTask').modal('hide');
+                } else {
+                    alert("Input task tidak valid");
+                }
             },
             error: function (xhr, errmsg, err) {
                 console.log(xhr.status + ": " + xhr.responseText);
@@ -147,7 +152,7 @@
     })
 </script>
 
-<h1 style="text-align: center;">Tugas 4&5 PBP/PBD</h1>
+<h1 style="text-align: center;">Tugas 4, 5, dan 6 PBP/PBD</h1>
 
 <h2 style="text-align: center;">To-Do List</h2>
 
@@ -166,7 +171,7 @@
     <div class="row justify-content-center">
         <div class="col d-flex justify-content-end">
             <button class="btn btn-primary" style="text-align: center;" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">Tambah Task</button>
+                data-bs-target="#modalTambahTask">Tambah Task</button>
         </div>
         <div class="col d-flex justify-content-start">
             <button class="btn btn-primary" style="text-align: center;"><a style="color:white; text-decoration:none"
@@ -174,11 +179,11 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalTambahTask" tabindex="-1" aria-labelledby="modalTambahTaskLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Task</h1>
+                <h1 class="modal-title fs-5" id="modalTambahTaskLabel">Tambah Task</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     onclick="resetForm();"></button>
             </div>
@@ -201,7 +206,7 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                     onclick="resetForm();">Close</button>
                 <input type="submit" name="submit" id="addButton" value="Tambah" class="btn btn-primary"
-                    onclick="addTask();" data-bs-dismiss="modal">
+                    onclick="addTask();">
             </div>
         </div>
     </div>

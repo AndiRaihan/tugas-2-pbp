@@ -129,7 +129,12 @@ def add_todolist_ajax(request):
             response_data['title'] = title
             response_data['description'] = description
             response_data['date'] = datetime.date.today()
-            return JsonResponse(response_data);
+            response_data['msg'] = "success"
+            return JsonResponse(response_data)
+        
+        elif request.method == 'POST':
+            response_data['msg'] = "failed"
+            return JsonResponse(response_data)
 
         # Render halaman add task
         context = {
